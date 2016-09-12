@@ -11,8 +11,8 @@ public class PriceCalculator {
         if (totalPrice < 0 ||quantity <= 0) {
             throw new InputException("Illegal totalPrice or quantity");
         }
-        priceList.put(goodsName, totalPrice/quantity);
-        return totalPrice/quantity;
+        priceList.put(goodsName, totalPrice / quantity);
+        return totalPrice / quantity;
     }
 
     public double calculateTotalPrice(String goodsName, int quantity) throws InputException {

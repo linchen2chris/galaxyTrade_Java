@@ -7,7 +7,7 @@ import java.util.Map;
  * Created by chris on 15-8-15.
  */
 public class NumberTransalator {
-    private static Map<String,Character> wordMapping = new HashMap<String, Character>();
+    private static Map<String, Character> wordMapping = new HashMap<String, Character>();
     private Transalator transalator = new Transalator();
 
     public String getRoman(String phrase) throws InputException {
@@ -28,6 +28,6 @@ public class NumberTransalator {
     }
 
     public void generateMapping(String word, Character romanToken){
-        wordMapping.put(word,romanToken);
+        wordMapping.put(word, romanToken);
     }
 }

@@ -43,7 +43,7 @@ public class GalaxyTrade {
                 }
                 bw.write(answer);
             }
-        } catch(IOException e){
+        } catch (IOException e) {
             e.getMessage();
         } finally {
             try {

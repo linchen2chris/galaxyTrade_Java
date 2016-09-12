@@ -12,7 +12,7 @@
    3. NumberQuestionParser: 解析数字问题, 如"How much is glob glob ?",并利用NumberTransalator给出回答.
    4. PriceQuestionParser: 解析商品价格问题, 如"How many Credits is glob golb Silver ?",并利用NumberTransalator和PriceCalculator给出回答
       
-4) 客户端代码是GalaxyTrade类. 它负责从输入文件中读入一行, 对这一行正则判定,使用工厂模式生成相应的Parser,进行解析,把解析的结果输出到文件.
+3) 客户端代码是GalaxyTrade类. 它负责从输入文件中读入一行, 对这一行正则判定,使用工厂模式生成相应的Parser,进行解析,把解析的结果输出到文件.
 ** 程序如何运行:
    main函数再GalaxyTrade类中,运行它需要提供两个参数:
    1)  第一个参数是输入文件,包含完整路径, 如 "/home/chris/IdeaProjects/GalaxyTrade/src/sampleInput"
