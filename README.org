@@ -1,46 +1,46 @@
 * GalaxyTrade 
 
 ** GalaxyTrade的详细设计
-1) Parser接口
+*** Parser接口
    它是程序的核心, 它内部包含两个静态的功能类:NumerTransalator 和 PriceCalculator.
    1. NumberTransalator用于将单词表示的数字转换成整数,如"glob glob"可以转换成整数2.
    2. PriceCalculator 用于存储商品的价格信息, 并根据商品价格表计算一批商品的价格.
  
-2) 有四个类实现Parser接口,分别对四种输入的语句进行解析.
+*** 有四个类实现Parser接口,分别对四种输入的语句进行解析.
    1. MappingParser: 解析Mapping语句,如"glob is I", 初始化NumberTransalator.
    2. GoodsInfoParser: 解析商品信息语句,如"glob glob Silver is 34",并初始化PriceCalculator.
    3. NumberQuestionParser: 解析数字问题, 如"How much is glob glob ?",并利用NumberTransalator给出回答.
    4. PriceQuestionParser: 解析商品价格问题, 如"How many Credits is glob golb Silver ?",并利用NumberTransalator和PriceCalculator给出回答
       
-3) 客户端代码是GalaxyTrade类. 它负责从输入文件中读入一行, 对这一行正则判定,使用工厂模式生成相应的Parser,进行解析,把解析的结果输出到文件.
+*** 客户端代码是GalaxyTrade类. 它负责从输入文件中读入一行, 对这一行正则判定,使用工厂模式生成相应的Parser,进行解析,把解析的结果输出到文件.
 ** 程序如何运行:
    main函数再GalaxyTrade类中,运行它需要提供两个参数:
    1)  第一个参数是输入文件,包含完整路径, 如 "/home/chris/IdeaProjects/GalaxyTrade/src/sampleInput"
        内容可以是
       #+BEGIN_SRC 
-glob is I
-prok is V
-pish is X
-tegj is L
-glob glob Silver is 34 Credits
-glob prok Gold is 57800 Credits
-pish pish Iron is 3910 Credits
-how much is pish pish pish prok ?
-how much is pish tegj glob glob ?
-how many Credits is glob prok Silve ?
-how many Credits is glob prok Gold ?
-how many Credits is glob prok Iron ?
-how much wood could a woodchuck chuck if a woodchuck could chuck wood ?
+      glob is I
+      prok is V
+      pish is X
+      tegj is L
+      glob glob Silver is 34 Credits
+      glob prok Gold is 57800 Credits
+      pish pish Iron is 3910 Credits
+      how much is pish pish pish prok ?
+      how much is pish tegj glob glob ?
+      how many Credits is glob prok Silve ?
+      how many Credits is glob prok Gold ?
+      how many Credits is glob prok Iron ?
+      how much wood could a woodchuck chuck if a woodchuck could chuck wood ?
       #+END_SRC
    2) 第二个参数是输出文件,包含完整路径,如 "/home/chris/IdeaProjects/GalaxyTrade/src/result".
       程序运行后,运行结构会输出到这个文件里,它的内容可能是
       #+BEGIN_SRC 
-pish pish pish prok is 35
-pish tegj glob glob is 42
-Input Errors in 10: Silve is invalid goods name!
-glob prok Gold is 57800 Credits
-glob prok Iron is 782 Credits
-I have no idea what you are talking about
+      pish pish pish prok is 35
+      pish tegj glob glob is 42
+      Input Errors in 10: Silve is invalid goods name!
+      glob prok Gold is 57800 Credits
+      glob prok Iron is 782 Credits
+      I have no idea what you are talking about
       #+END_SRC
       
 ** 关于输入的一些假定
