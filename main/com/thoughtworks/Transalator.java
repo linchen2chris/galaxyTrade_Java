@@ -41,10 +41,20 @@ public class Transalator {
     public boolean isLegalRomanNumerials(String romanNumerials) {
 
         if (!romanNumerials.matches("[IVXLCDM]+")) {
-            return  false;
+            return false;
         }
 
-        String[] illegalSubString = {"IIII", "XXXX", "CCCC", "MMMM", "VV", "LL", "DD", "IL", "IC", "ID", "IM", "XD", "XM", "VX", "VL", "VD", "VM", "LC", "LD", "LM", "DM"};
+        /** according to the roman number rules, the following substring is illegal,
+         * these subString should not be included
+         */
+        String[] illegalSubString = {
+                "IIII", "XXXX", "CCCC", "MMMM",
+                "VV", "LL", "DD",
+                "IL", "IC", "ID", "IM",
+                "XD", "XM",
+                "VX", "VL", "VD", "VM",
+                "LC", "LD", "LM", "DM"
+        };
 
         for (String subString: illegalSubString) {
             if (romanNumerials.contains(subString))

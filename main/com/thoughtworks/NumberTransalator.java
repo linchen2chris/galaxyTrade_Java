@@ -14,7 +14,7 @@ public class NumberTransalator {
         String[] words = phrase.split(" {1,}");
         String result = "";
 
-        for (String word : words) {
+        for (String word: words) {
             if (!wordMapping.containsKey(word)) {
                 throw new InputException(word +  " is invalid word to convert to  the Roman numberials");
             }
