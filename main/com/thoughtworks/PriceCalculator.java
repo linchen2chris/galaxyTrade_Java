@@ -26,4 +26,8 @@ public class PriceCalculator {
     }
 
     private static Map<String, Double> priceList = new HashMap<String, Double>();// the price list store the goods name and its price per Credits.
+
+    public double getPrice(String targetGoodsName) {
+        return priceList.get(targetGoodsName);
+    }
 }

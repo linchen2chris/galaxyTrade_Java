@@ -9,6 +9,14 @@ import java.util.regex.Pattern;
  * Created by chris on 15-8-15.
  */
 public class NumberQuestionParser implements Parser {
+    private NumberTransalator numberTransalator;
+    private PriceCalculator priceCalculator;
+
+    public NumberQuestionParser(NumberTransalator numberTransalator, PriceCalculator priceCalculator) {
+        this.numberTransalator = numberTransalator;
+        this.priceCalculator = priceCalculator;
+    }
+
     @Override
     public String parse(String line) throws InputException {
         Pattern pattern = Pattern.compile("^how much is ([a-zA-Z ]+) \\?$");

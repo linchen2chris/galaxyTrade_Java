@@ -10,6 +10,13 @@ import java.util.regex.Pattern;
  */
 public class MappingParser implements Parser {
 
+    private NumberTransalator numberTransalator;
+
+    public MappingParser(NumberTransalator numberTransalator) {
+
+        this.numberTransalator = numberTransalator;
+    }
+
     @Override
     public String parse(String line) throws InputException {
         Pattern pattern = Pattern.compile("(\\w+) is ([IVXLCDM]){1}");

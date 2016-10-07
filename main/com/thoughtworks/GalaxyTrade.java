@@ -9,16 +9,21 @@ import java.io.*;
 public class GalaxyTrade {
 
     public String processLine(String line) throws InputException {
+        NumberTransalator numberTransalator = new NumberTransalator();
+        PriceCalculator priceCalculator = new PriceCalculator();
         Parser parser;
         if (line.matches("\\w+ is [IVXLCDM]{1}")) {
-            parser = new MappingParser();
+            parser = new MappingParser(numberTransalator);
         } else if ( line.matches("[a-zA-Z ]+ is \\d+ Credits$")) {
-            parser = new GoodsInfoParser();
+            parser = new GoodsInfoParser(numberTransalator, priceCalculator);
         } else if (line.matches("^how much is [a-zA-Z ]+ \\?$")) {
-            parser = new NumberQuestionParser();
+            parser = new NumberQuestionParser(numberTransalator, priceCalculator);
         } else if (line.matches("^how many Credits is [a-zA-Z ]+ \\?$")) {
-            parser = new PriceQuestionParser();
-        } else {
+            parser = new PriceQuestionParser(numberTransalator, priceCalculator);
+        } else if (line.matches("^how many (\\w+) is (\\w+) (\\w+) \\?")) {
+            parser = new GoodsExchange(numberTransalator, priceCalculator);
+        }
+        else {
             return "I have no idea what you are talking about\n";
         }
         return parser.parse(line);

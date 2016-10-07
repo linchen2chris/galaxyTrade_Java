@@ -2,7 +2,6 @@ package main.com.thoughtworks;
 
 import main.com.thoughtworks.exception.InputException;
 
-import java.util.DoubleSummaryStatistics;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,6 +9,14 @@ import java.util.regex.Pattern;
  * Created by chris on 15-8-15.
  */
 public class GoodsInfoParser implements Parser {
+
+    NumberTransalator numberTransalator;
+    private PriceCalculator priceCalculator;
+
+    public GoodsInfoParser(NumberTransalator numberTransalator, PriceCalculator priceCalculator) {
+        this.numberTransalator=numberTransalator;
+        this.priceCalculator = priceCalculator;
+    }
 
     @Override
     public String parse(String line) throws InputException {

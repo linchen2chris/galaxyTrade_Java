@@ -8,7 +8,5 @@ import main.com.thoughtworks.exception.InputException;
 public interface Parser {
 
     public String parse(String line) throws InputException;
-    static PriceCalculator priceCalculator = new PriceCalculator();
-    static NumberTransalator numberTransalator = new NumberTransalator();
 
 }

@@ -1,8 +1,6 @@
 package test.com.thoughtworks;
 
-import main.com.thoughtworks.GoodsInfoParser;
-import main.com.thoughtworks.MappingParser;
-import main.com.thoughtworks.Parser;
+import main.com.thoughtworks.*;
 import main.com.thoughtworks.exception.InputException;
 import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -13,10 +11,10 @@ import static org.hamcrest.core.Is.is;
 public class GoodsInfoParserTest {
     @Test
     public void parseTest() throws InputException {
-        Parser parser = new MappingParser();
+        Parser parser = new MappingParser(new NumberTransalator());
         parser.parse("glob is I");
-        parser = new GoodsInfoParser();
+        parser = new GoodsInfoParser(new NumberTransalator(), new PriceCalculator());
         assertThat(parser.parse("glob glob Silver is 34 Credits"),is(""));
-        assertThat(Parser.priceCalculator.calculateTotalPrice("Silver", 2),is(34.0));
+
     }
 }

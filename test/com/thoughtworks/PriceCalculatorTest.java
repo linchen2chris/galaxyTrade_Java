@@ -45,5 +45,11 @@ public class PriceCalculatorTest {
         priceListCalculator.generatePriceList("Iron", 20, 3910);
         priceListCalculator.calculateTotalPrice("Golden", -4);
     }
+    @Test
+    public void GetPriceListTest() throws InputException {
+        PriceCalculator priceListCalculator = new PriceCalculator();
+        priceListCalculator.generatePriceList("Golden",4,57800);
+        assertThat(priceListCalculator.getPrice("Golden"), is(14450.0));
+    }
 
 }
